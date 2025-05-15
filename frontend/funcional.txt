@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockly Demo</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="node_modules/blockly/blockly_compressed.js"></script>
+  <script src="node_modules/blockly/blocks_compressed.js"></script>
+  <script src="node_modules/blockly/javascript_compressed.js"></script>
+  <script src="node_modules/blockly/msg/en.js"></script>
+  
+  <script src="scripts/my_blocks.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Blockly Programming Area</h1>
+    <div id="blocklyDiv"></div> 
+  </div>
+  
+  <xml id="toolbox" style="display: none">
+    <!-- Toolbox XML structure remains unchanged -->
+    <category name="Control" colour="20">
+      <block type="controls_if"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category name="Logic" colour="210">
+
+      <block type="mover_para_frente"></block>
+      <block type="girar"></block>
+
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_boolean"></block>
+    </category>
+    
+    <category name="Loops" colour="120">
+      
+      <block type="repeat"></block>
+      <!-- <block type="controls_repeat"></block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for"></block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+      <block type="for_time"></block> -->
+    </category>
+      
+    <category name="Math" colour="230">
+      <block type="math_number">
+        <field name="NUM">0</field>
+      </block>
+      <block type="math_arithmetic">
+        <field name="OP">ADD</field>
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="Variables" colour="330" custom="VARIABLE"></category>
+    <category name="Functions" colour="290" custom="PROCEDURE"></category>
+  </xml>
+
+  <script>
+    const toolbox = document.getElementById('toolbox'); // Certifique-se de que o toolbox existe
+    var workspace = Blockly.inject('blocklyDiv', {
+      toolbox: toolbox,
+      trashcan: true,
+      scrollbars: true,
+      zoom: {
+        controls: true,
+        wheel: true,
+      },
+    });
+  </script>
+
+<button id="executarButton">Executar Código</button>
+
+
+
+<script>
+    
+    document.getElementById('executarButton').addEventListener('click', function() {
+      var code = Blockly.JavaScript.workspaceToCode(workspace);
+      
+      try {
+          // Remove ponto e vírgula e espaços extras
+          code = code.trim().replace(/;$/, "");
+          
+          // Converte para um array JSON válido
+          let jsonData = JSON.parse(code);
+
+          // Envia os comandos para o backend
+          fetch('http://localhost:5000/executar', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(jsonData) // Converte de volta para string JSON
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data); // Exibe a resposta no console
+              alert(JSON.stringify(data, null, 2)); // Mostra a resposta formatada
+          })
+          .catch((error) => {
+              console.error('Erro:', error);
+              alert('Erro ao executar o código.');
+          });
+      } catch (e) {
+          console.error("Erro ao converter JSON:", e);
+          alert("Erro ao gerar JSON. Verifique os blocos.");
+      }
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+pinel@GUILHERME-PC:~$ export ROS_MASTER_URI=http://192.168.0.113:11311                                         pinel@GUILHERME-PC:~$ export ROS_IP=192.168.0.109                                                              pinel@GUILHERME-PC:~$ cd /mnt/d                                                                                pinel@GUILHERME-PC:/mnt/d$ cd Meus_Arquivos/NERO/Mestrado/Meu_blockly/blockly-pioneer/backend/node/            pinel@GUILHERME-PC:/mnt/d/Meus_Arquivos/NERO/Mestrado/Meu_blockly/blockly-pioneer/backend/node$ python3 pioneer_controller.py
+
+
+pinel@GUILHERME-PC:~$ export ROS_MASTER_URI=http://192.168.0.113:11311                          pinel@GUILHERME-PC:~$ export ROS_IP=192.168.0.109  
+pinel@GUILHERME-PC:~$ cd /mnt/d                                                                 pinel@GUILHERME-PC:/mnt/d$ cd Meus_Arquivos/NERO/Mestrado/Meu_blockly/blockly-pioneer/frontend/ pinel@GUILHERME-PC:/mnt/d/Meus_Arquivos/NERO/Mestrado/Meu_blockly/blockly-pioneer/frontend$ python3 -m http.server                    
+
+
+rosnode kill /RosAria
+      
+============================================================================================================
+
+ROS 2 HUMBLE:
+
+Iniciar o ROS2 no PC:
+
+- C:\Program Files\rti_connext_dds-7.3.0\resource\scripts\rtisetenv_x64Win64VS2017.bat
+
+- call C:\dev\ros2_humble\local_setup.bat
+
+- export ROS_DOMAIN_ID=0
+
+####
+- Modo otimizado:
+	- cd /d D:\CROS\blockly-ROS-project
+	- ros2_setup.bat
+###
+
+Para verificar os tópicos:
+
+- ros2 topic list
+
+Conectando JETSON e Pioneer:
+
+- ping 192.168.0.11 (verifica a comunicação com a JETSON)
+- ssh jetson@192.168.0.11
+- password:jetson
+- cd pioneer/
+- source /opt/ros/foxy/setup.bash
+- export ROS_DOMAIN_ID=0
+- source ~/pioneer/install/local_setup.bash
+- ros2 run rosaria RosAria
+
+
+- sudo poweroff
+
+Comandos:
+
+- ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.5, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}
+
+- ros2 topic echo /pose 
+
+- OBS: deve ser utilizado em outro terminal. Dessa forma, deve ser inicializado o ROS2 antes como segue abaixo:
+
+		- C:\Program Files\rti_connext_dds-7.3.0\resource\scripts\rtisetenv_x64Win64VS2017.bat
+		- call C:\dev\ros2_humble\local_setup.bat
+		- set ROS_DOMAIN_ID=0
+		- comando desejado
+
+
+Executar a plataforma:
+
+- Frontend - apenas executar o index.html no navegador
+
+- Backend:
+	- cd backend\node
+	- python pioneer_controller_ROS2_TESTE.py

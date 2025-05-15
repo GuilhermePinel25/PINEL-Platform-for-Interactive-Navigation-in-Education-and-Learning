@@ -1,0 +1,11 @@
+<launch>
+    <!-- Executa o nó de controle do Pioneer -->
+    <node name="pioneer_controller" pkg="pioneer_controller" type="pioneer_controller.py" output="screen">
+        <!-- Você pode definir argumentos ou parâmetros adicionais aqui -->
+        <!-- Exemplo: <param name="velocidade_inicial" value="0.5" /> -->
+    </node>
+
+    <!-- Adicione outros nós, se necessário -->
+    <!-- Exemplo: Um nó de simulação, um nó de sensores, etc. -->
+
+</launch>
