@@ -1,7 +1,11 @@
 @echo off
 
 :: Iniciar RTI Connext DDS
+<<<<<<< HEAD
 call "C:\Program Files\rti_connext_dds-7.3.0\resource\scripts\rtisetenv_x64Win64VS2017.bat"
+=======
+call "C:\Program Files\rti_connext_dds-7.5.0\resource\scripts\rtisetenv_x64Win64VS2017.bat"
+>>>>>>> f606ba7 (at4)
 
 :: Iniciar setup do ROS 2
 call C:\dev\ros2_humble\local_setup.bat
