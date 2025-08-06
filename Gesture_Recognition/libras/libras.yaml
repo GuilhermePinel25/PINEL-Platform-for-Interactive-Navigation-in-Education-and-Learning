@@ -1,0 +1,44 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# COCO128 dataset https://www.kaggle.com/ultralytics/coco128 (first 128 images from COCO train2017) by Ultralytics
+# Example usage: python train.py --data coco128.yaml
+# parent
+# ├── yolov5
+# └── datasets
+#     └── coco128  ← downloads here (7 MB)
+
+# "c:\users\bobgreen\documents\pythonscripts\python_envs\yolov5env\scripts\python.exe"  "C:\Users\BobGreen\Documents\PythonScripts\python_envs\yolov5env\Scripts\tensorboard.exe" --logdir runs\train_among
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ./  # dataset root dir
+train: train/images  # train images (relative to 'path') 128 images
+val: valid/images # val images (relative to 'path') 128 images
+test: test/images  # test images (optional)
+
+# Classes
+names:
+  0: A
+  1: B
+  2: C
+  3: D1
+  4: D2
+  5: E
+  6: F
+  7: G
+  8: I
+  9: K
+  10: L
+  11: M
+  12: 'N'
+  13: O
+  14: P
+  15: Q
+  16: R
+  17: S
+  18: T
+  19: U
+  20: V
+  21: W
+
+  # "c:\users\bobgreen\documents\pythonscripts\python_envs\yolov5env\scripts\python.exe"  "C:\Users\BobGreen\Documents\PythonScripts\python_envs\yolov5env\Scripts\tensorboard.exe" --logdir runs\train_among
+
+

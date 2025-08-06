@@ -255,7 +255,11 @@ def classify_stream():
             yield b"--frame\r\nContent-Type: image/jpeg\r\n\r\n"  # dummy frame
             return
 
+<<<<<<< HEAD
         model = YOLO("D:\\CROS\\blockly-ROS-project\\Gesture_Recognition\\libras\\runs\\detect\\train\\weights\\best.pt")
+=======
+        model = YOLO("D:\\ICAR\\blockly-ROS-project\\Gesture_Recognition\\libras\\runs\\detect\\train\\weights\\best.pt")
+>>>>>>> 210ddd8 (at3)
         seguir = True
         detected_class = None
         classification_frame = None

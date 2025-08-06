@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pinel@GUILHERME-PC:~$ export ROS_MASTER_URI=http://192.168.0.113:11311                                         pinel@GUILHERME-PC:~$ export ROS_IP=192.168.0.109                                                              pinel@GUILHERME-PC:~$ cd /mnt/d                                                                                pinel@GUILHERME-PC:/mnt/d$ cd Meus_Arquivos/NERO/Mestrado/Meu_blockly/blockly-pioneer/backend/node/            pinel@GUILHERME-PC:/mnt/d/Meus_Arquivos/NERO/Mestrado/Meu_blockly/blockly-pioneer/backend/node$ python3 pioneer_controller.py
 
 
@@ -9,6 +10,8 @@ rosnode kill /RosAria
       
 ============================================================================================================
 
+=======
+>>>>>>> 210ddd8 (at3)
 ROS 2 HUMBLE:
 
 Iniciar o ROS2 no PC:
@@ -19,10 +22,17 @@ Iniciar o ROS2 no PC:
 
 - export ROS_DOMAIN_ID=0
 
+<<<<<<< HEAD
 ####
 - Modo otimizado:
 	- cd /d D:\CROS\blockly-ROS-project
 	- ros2_setup.bat
+=======
+## Utilize este método ##
+- Modo otimizado:
+	cd /d D:\ICAR\blockly-ROS-project 
+	ros2_setup.bat
+>>>>>>> 210ddd8 (at3)
 ###
 
 Para verificar os tópicos:
@@ -34,11 +44,19 @@ Conectando JETSON e Pioneer:
 - ping 192.168.0.11 (verifica a comunicação com a JETSON)
 - ssh jetson@192.168.0.11
 - password:jetson
+<<<<<<< HEAD
 - cd pioneer/
 - source /opt/ros/foxy/setup.bash
 - export ROS_DOMAIN_ID=0
 - source ~/pioneer/install/local_setup.bash
 - ros2 run rosaria RosAria
+=======
+cd pioneer/
+source /opt/ros/foxy/setup.bash
+export ROS_DOMAIN_ID=0
+source ~/pioneer/install/local_setup.bash
+ros2 run rosaria RosAria
+>>>>>>> 210ddd8 (at3)
 
 
 - sudo poweroff
@@ -62,5 +80,12 @@ Executar a plataforma:
 - Frontend - apenas executar o index.html no navegador
 
 - Backend:
+<<<<<<< HEAD
 	- cd backend\node
 	- python pioneer_controller_ROS2_TESTE.py
+=======
+	cd /d D:\ICAR\blockly-ROS-project 
+	ros2_setup.bat
+	cd backend\node
+	python pioneer_controller_ROS2_TESTE.py
+>>>>>>> 210ddd8 (at3)
