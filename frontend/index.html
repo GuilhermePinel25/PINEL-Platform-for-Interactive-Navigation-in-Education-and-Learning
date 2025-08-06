@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,45 +10,34 @@
   <script src="node_modules/blockly/blocks_compressed.js"></script>
   <script src="node_modules/blockly/javascript_compressed.js"></script>
   <script src="node_modules/blockly/msg/en.js"></script>
-  
+
   <script src="scripts/my_blocks.js"></script>
 
 
 </head>
+
 <body>
   <div class="layout-wrapper">
     <div class="container-wrapper">
       <div class="container">
-<<<<<<< HEAD
-        <h1>Área de Programação</h1>
-=======
         <h1>Programming Area</h1>
->>>>>>> 210ddd8 (at3)
         <div id="blocklyDiv"></div>
       </div>
 
       <div class="button-wrapper">
-<<<<<<< HEAD
-        <button id="executeButton">Executar</button>
-=======
         <button id="executeButton">Execute</button>
->>>>>>> 210ddd8 (at3)
       </div>
     </div>
 
     <div class="camera-section">
-<<<<<<< HEAD
-      <h3>Classificação em Tempo Real</h3>
-=======
       <h3>Classification in Real Time</h3>
->>>>>>> 210ddd8 (at3)
       <img id="yoloView" src="https://via.placeholder.com/640x480" />
     </div>
   </div>
-  
-  
-  
-  
+
+
+
+
   <xml id="toolbox" style="display: none">
     <!-- Toolbox XML structure remains unchanged -->
     <!-- <category name="Control" colour="20">
@@ -77,28 +66,19 @@
       <block type="turn"></block>
     </category>
 
-<<<<<<< HEAD
-    <category name="Gestos" colour="160">
-=======
     <category name="Gestures" colour="160">
->>>>>>> 210ddd8 (at3)
       <block type="classificar_gestos"></block>
       <block type="resultado"></block>
       <block type="texto"></block>
 
     </category>
 
-<<<<<<< HEAD
-    <category name="Lógica" colour="210">
-      <block type="my_controls_if"></block>
-=======
     <category name="Logic" colour="210">
       <block type="my_controls_if"></block>
       <block type="repeat_custom"></block>
->>>>>>> 210ddd8 (at3)
       <block type="logic_compare"></block>
     </category>
-    
+
     <!-- <category name="Loops" colour="120">
       
       <block type="repeat"></block>
@@ -145,7 +125,7 @@
     });
   </script>
 
-  
+
   <script>
     // Variável global para armazenar resultados
     let lastGestureResult = null;
@@ -160,15 +140,15 @@
         // Solução para extrair múltiplos objetos JSON concatenados
         const jsonObjects = [];
         let remaining = fullCode.trim();
-        
+
         while (remaining.length > 0) {
           // Encontra o próximo objeto JSON válido
           const firstBrace = remaining.indexOf('{');
           if (firstBrace === -1) break;
-          
+
           let openBraces = 0;
           let endIndex = -1;
-          
+
           // Encontra o fechamento correto do JSON
           for (let i = firstBrace; i < remaining.length; i++) {
             if (remaining[i] === '{') openBraces++;
@@ -178,9 +158,9 @@
               break;
             }
           }
-          
+
           if (endIndex === -1) break;
-          
+
           const jsonStr = remaining.substring(firstBrace, endIndex + 1);
           try {
             const jsonObj = JSON.parse(jsonStr);
@@ -191,11 +171,11 @@
             break;
           }
         }
-        
+
         console.log("Comandos extraídos:", jsonObjects);
-        
+
         return jsonObjects;
-        
+
       } catch (error) {
         console.error("Erro ao extrair comandos:", error);
         return [];
@@ -289,23 +269,23 @@
       try {
         // Obtém a condição do bloco IF
         const condition = javascript.javascriptGenerator.valueToCode(block, 'IF0', javascript.javascriptGenerator.ORDER_NONE);
-        
+
         // Avalia a condição
         const conditionResult = eval(condition);
         console.log(`Condição IF (${condition}):`, conditionResult);
-        
+
         if (conditionResult) {
           // Processa os blocos dentro do IF
           let innerBlock = block.getInputTargetBlock('DO0');
-          
+
           while (innerBlock) {
             await processAndExecuteBlock(innerBlock);
             innerBlock = innerBlock.getNextBlock();
           }
         }
-        
+
         return true;
-        
+
       } catch (error) {
         console.error("Erro no bloco IF:", error);
         throw error;
@@ -354,7 +334,7 @@
     // Função principal de execução sequencial
     async function executeSequentially() {
       const executeButton = document.getElementById('executeButton');
-      
+
       try {
         console.log("Iniciando execução sequencial");
         lastGestureResult = null;
@@ -419,416 +399,10 @@
     document.getElementById('executeButton').addEventListener('click', executeSequentially);
 
     console.log("Sistema de execução sequencial configurado com sucesso");
-    
+
   </script>
 
 
 </body>
+
 </html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blockly Demo</title>
-  <link rel="stylesheet" href="styles/styles.css">
-  <script src="node_modules/blockly/blockly_compressed.js"></script>
-  <script src="node_modules/blockly/blocks_compressed.js"></script>
-  <script src="node_modules/blockly/javascript_compressed.js"></script>
-  <script src="node_modules/blockly/msg/en.js"></script>
-  
-  <script src="scripts/my_blocks.js"></script>
-
-
-</head>
-<body>
-  <div class="layout-wrapper">
-    <div class="container-wrapper">
-      <div class="container">
-        <h1>Programming Area</h1>
-        <div id="blocklyDiv"></div>
-      </div>
-
-      <div class="button-wrapper">
-        <button id="executeButton">Execute</button>
-      </div>
-    </div>
-
-    <div class="camera-section">
-      <h3>Classification in Real Time</h3>
-      <img id="yoloView" src="https://via.placeholder.com/640x480" />
-    </div>
-  </div>
-  
-  
-  
-  
-  <xml id="toolbox" style="display: none">
-    <!-- Toolbox XML structure remains unchanged -->
-    <!-- <category name="Control" colour="20">
-      <block type="my_controls_if"></block>
-      <block type="controls_for">
-        <value name="FROM">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="TO">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-        <value name="BY">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-    </category> -->
-
-    <category name="Pioneer 3DX" colour="0">
-      <block type="move_forward"></block>
-      <block type="turn"></block>
-    </category>
-
-    <category name="Gestures" colour="160">
-      <block type="classificar_gestos"></block>
-      <block type="resultado"></block>
-      <block type="texto"></block>
-
-    </category>
-
-    <category name="Logic" colour="210">
-      <block type="my_controls_if"></block>
-      <block type="repeat_custom"></block>
-      <block type="logic_compare"></block>
-    </category>
-    
-    <!-- <category name="Loops" colour="120">
-      
-      <block type="repeat"></block>
-      <block type="controls_repeat"></block>
-      <block type="controls_whileUntil"></block>
-      <block type="controls_for"></block>
-      <block type="controls_forEach"></block>
-      <block type="controls_flow_statements"></block>
-      <block type="for_time"></block>
-    </category>
-      
-    <category name="Math" colour="230">
-      <block type="math_number">
-        <field name="NUM">0</field>
-      </block>
-      <block type="math_arithmetic">
-        <field name="OP">ADD</field>
-        <value name="A">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-        <value name="B">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-      </block>
-    </category>
-    <category name="Variables" colour="330" custom="VARIABLE"></category>
-    <category name="Functions" colour="290" custom="PROCEDURE"></category> -->
-  </xml>
-
-  <script>
-    const toolbox = document.getElementById('toolbox'); // Ensure the toolbox exists
-    var workspace = Blockly.inject('blocklyDiv', {
-      toolbox: toolbox,
-      trashcan: true,
-      scrollbars: true,
-      zoom: {
-        controls: true,
-        wheel: true,
-      },
-    });
-  </script>
-
-  
-  <script>
-    // Variável global para armazenar resultados
-    let lastGestureResult = null;
-
-    // =============================================
-    // SISTEMA DE EXECUÇÃO SEQUENCIAL COMPLETA
-    // =============================================
-
-    // Função para extrair todos os comandos individuais do código gerado
-    function extractAllCommands(fullCode) {
-      try {
-        // Solução para extrair múltiplos objetos JSON concatenados
-        const jsonObjects = [];
-        let remaining = fullCode.trim();
-        
-        while (remaining.length > 0) {
-          // Encontra o próximo objeto JSON válido
-          const firstBrace = remaining.indexOf('{');
-          if (firstBrace === -1) break;
-          
-          let openBraces = 0;
-          let endIndex = -1;
-          
-          // Encontra o fechamento correto do JSON
-          for (let i = firstBrace; i < remaining.length; i++) {
-            if (remaining[i] === '{') openBraces++;
-            if (remaining[i] === '}') openBraces--;
-            if (openBraces === 0) {
-              endIndex = i;
-              break;
-            }
-          }
-          
-          if (endIndex === -1) break;
-          
-          const jsonStr = remaining.substring(firstBrace, endIndex + 1);
-          try {
-            const jsonObj = JSON.parse(jsonStr);
-            jsonObjects.push(jsonStr);
-            remaining = remaining.substring(endIndex + 1).trim();
-          } catch (e) {
-            console.error("Erro ao parsear JSON:", jsonStr);
-            break;
-          }
-        }
-        
-        console.log("Comandos extraídos:", jsonObjects);
-        
-        return jsonObjects;
-        
-      } catch (error) {
-        console.error("Erro ao extrair comandos:", error);
-        return [];
-      }
-    }
-
-    // Função para executar um único comando no backend
-    async function executeSingleCommand(command) {
-      try {
-        const parsedCommand = JSON.parse(command);
-        console.log("Comando recebido:", parsedCommand);
-
-        // ✅ Bloco especial: IF condicional
-        if (parsedCommand.action === "conditional_execution") {
-          const condition = parsedCommand.condition;
-          const comandosInternos = parsedCommand.commands || [];
-
-          // Substitui 'resultado' por variável local
-          const cond = condition.replace(/resultado/g, `"${lastGestureResult}"`);
-          const resultadoCondicao = eval(cond);
-
-          console.log(`Condicional: ${condition} -> ${resultadoCondicao}`);
-
-          if (resultadoCondicao) {
-            for (const subCmd of comandosInternos) {
-              const subJson = JSON.stringify(subCmd);
-              await executeSingleCommand(subJson);
-            }
-          }
-
-          return [{
-            action: "conditional_execution",
-            executado: resultadoCondicao
-          }];
-        }
-
-        // ✅ Tratamento especial: classificar_gestos (stream ao vivo + espera + GET backend)
-        if (parsedCommand.action === "classificar_gestos") {
-          return new Promise((resolve) => {
-            const stream = document.getElementById('yoloView');
-            const streamURL = "http://localhost:5000/classify_stream?t=" + new Date().getTime();
-            stream.src = streamURL;
-
-            setTimeout(async () => {
-              stream.src = ""; // esconde o vídeo
-
-              // Consulta o resultado final do backend
-              let backendResult = null;
-
-              try {
-                const response = await fetch("http://localhost:5000/get_last_gesture_result");
-                const json = await response.json();
-                backendResult = json.resultado || null;
-                console.log("Resultado do gesto (get_last_gesture_result):", backendResult);
-                lastGestureResult = backendResult;
-              } catch (e) {
-                console.error("Erro ao buscar resultado do gesto:", e);
-              }
-
-              resolve([{
-                action: "classificar_gestos",
-                resultado: backendResult
-              }]);
-            }, 10000); // aguarda os 10s de streaming
-          });
-        }
-
-        // ✅ Demais comandos (normais)
-        const response = await fetch('http://localhost:5000/execute', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify([parsedCommand])
-        });
-
-        const result = await response.json();
-
-        if (result[0]?.resultado) {
-          lastGestureResult = result[0].resultado;
-        }
-
-        return result;
-
-      } catch (error) {
-        console.error("Erro ao executar comando:", error);
-        throw error;
-      }
-    }
-
-    // Função para processar blocos condicionais (if)
-    async function processIfBlock(block) {
-      try {
-        // Obtém a condição do bloco IF
-        const condition = javascript.javascriptGenerator.valueToCode(block, 'IF0', javascript.javascriptGenerator.ORDER_NONE);
-        
-        // Avalia a condição
-        const conditionResult = eval(condition);
-        console.log(`Condição IF (${condition}):`, conditionResult);
-        
-        if (conditionResult) {
-          // Processa os blocos dentro do IF
-          let innerBlock = block.getInputTargetBlock('DO0');
-          
-          while (innerBlock) {
-            await processAndExecuteBlock(innerBlock);
-            innerBlock = innerBlock.getNextBlock();
-          }
-        }
-        
-        return true;
-        
-      } catch (error) {
-        console.error("Erro no bloco IF:", error);
-        throw error;
-      }
-    }
-
-    // Função para processar e executar todos os comandos de um bloco
-    async function processAndExecuteBlock(block) {
-      try {
-        const code = Blockly.JavaScript.blockToCode(block);
-        if (!code) return;
-
-        const comandosSeparados = extractAllCommands(code);
-        console.log("Comandos extraídos:", comandosSeparados);
-
-        for (let i = 0; i < comandosSeparados.length; i++) {
-          const comando = comandosSeparados[i];
-          const resultado = await executeSingleCommand(comando);
-
-          // ⬇️ Se o resultado veio do classificar_gestos, envia explicitamente ao backend
-          if (resultado && resultado[0]?.action === "classificar_gestos" && resultado[0]?.resultado) {
-            const gesto = resultado[0].resultado;
-            console.log("Enviando gesto ao backend:", gesto);
-
-            const confirmacao = await fetch("http://localhost:5000/execute", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify([{
-                action: "set_gesture_result",
-                resultado: gesto
-              }])
-            });
-
-            const confirmacaoJson = await confirmacao.json();
-            console.log("Confirmação backend:", confirmacaoJson);
-          }
-        }
-      } catch (err) {
-        console.error("Erro no bloco", block.type, ":", err.message);
-        alert("Erro no bloco " + block.type + ": " + err.message);
-      }
-    }
-
-
-
-    // Função principal de execução sequencial
-    async function executeSequentially() {
-      const executeButton = document.getElementById('executeButton');
-      
-      try {
-        console.log("Iniciando execução sequencial");
-        lastGestureResult = null;
-        executeButton.disabled = true;
-        executeButton.textContent = "Executando...";
-
-        const blocks = workspace.getTopBlocks(false);
-
-        if (blocks.length === 0) {
-          alert("Nenhum bloco para executar!");
-          return;
-        }
-
-        // Junta todos os comandos de todos os blocos
-        let todosComandos = [];
-
-        for (const block of blocks) {
-          const code = Blockly.JavaScript.blockToCode(block);
-          if (!code) continue;
-          const comandosSeparados = extractAllCommands(code);
-          todosComandos.push(...comandosSeparados);
-        }
-
-        // Executa um por um, garantindo ordem
-        for (const comando of todosComandos) {
-          const resultado = await executeSingleCommand(comando);
-
-          // Se foi classificar_gestos, envia o resultado explicitamente
-          if (resultado && resultado[0]?.action === "classificar_gestos" && resultado[0]?.resultado) {
-            const gesto = resultado[0].resultado;
-            console.log("Gesto detectado:", gesto);
-
-            const confirmacao = await fetch("http://localhost:5000/execute", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify([{
-                action: "set_gesture_result",
-                resultado: gesto
-              }])
-            });
-
-            const json = await confirmacao.json();
-            console.log("Confirmado pelo backend:", json);
-            lastGestureResult = gesto; // garante atualização local também
-          }
-        }
-
-        alert("Execução concluída com sucesso!");
-
-      } catch (error) {
-        console.error("Erro durante execução:", error);
-        alert("Erro durante execução: " + error.message);
-
-      } finally {
-        executeButton.disabled = false;
-        executeButton.textContent = "Executar";
-      }
-    }
-
-
-    // Configura o botão de execução
-    document.getElementById('executeButton').addEventListener('click', executeSequentially);
-
-    console.log("Sistema de execução sequencial configurado com sucesso");
-    
-  </script>
-
-
-</body>
-</html>
->>>>>>> 55ee050 (Atualizações locais antes de integrar com o repositório remoto)
