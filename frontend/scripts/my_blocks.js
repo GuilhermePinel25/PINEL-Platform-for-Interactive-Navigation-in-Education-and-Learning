@@ -1,4 +1,4 @@
-// =================== BLOCO IF =================
+// =================== BLOCO IF =================#
 
 // Bloco IF personalizado
 Blockly.Blocks['my_controls_if'] = {
