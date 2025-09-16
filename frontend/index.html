@@ -17,6 +17,16 @@
 </head>
 
 <body>
+
+  <!-- Logo da Plataforma -->
+  <div class="logos-bar">
+    <img src="imagens/LOGO_PINEL.png" alt="Logo da Plataforma" class="logo-left">
+    <a href="https://robotica.ufv.br/" target="_blank">
+      <img src="imagens/nero.png" alt="Logo do NERO" class="logo-right">
+    </a>
+  </div>
+
+
   <div class="layout-wrapper">
     <div class="container-wrapper">
       <div class="container">
@@ -341,6 +351,9 @@
         executeButton.disabled = true;
         executeButton.textContent = "Executando...";
 
+        // === SINALIZA INÍCIO DO LOTE ===
+        await fetch("http://localhost:5000/bridge/run_start", { method: "POST" });
+
         const blocks = workspace.getTopBlocks(false);
 
         if (blocks.length === 0) {
@@ -382,6 +395,9 @@
           }
         }
 
+        // === SINALIZA FIM DO LOTE (antes do alert) ===
+        await fetch("http://localhost:5000/bridge/run_end", { method: "POST" });
+
         alert("Execução concluída com sucesso!");
 
       } catch (error) {
@@ -389,6 +405,8 @@
         alert("Erro durante execução: " + error.message);
 
       } finally {
+        // Se algo falhar antes do run_end, garante o encerramento do status
+        try { await fetch("http://localhost:5000/bridge/run_end", { method: "POST" }); } catch (e) { }
         executeButton.disabled = false;
         executeButton.textContent = "Executar";
       }
