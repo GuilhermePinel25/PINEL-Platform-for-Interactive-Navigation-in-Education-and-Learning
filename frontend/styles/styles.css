@@ -1,3 +1,18 @@
+/* barra que segura as duas logos */
+.logos-bar{
+  display: flex;
+  justify-content: space-between;   /* esquerda x direita */
+  align-items: center;               /* alinha na mesma linha/altura */
+  padding: 20px;                     /* 20px topo/dir/baixo/esq da borda da página */
+  width: 100%;
+  box-sizing: border-box;            /* padding conta dentro da largura */
+}
+
+/* tamanhos sugeridos (ajuste se quiser) */
+.logo-left{  max-width: 180px; height: auto; display: block; }
+.logo-right{ max-width: 180px; height: auto; display: block; }
+
+
 /* Reset básico */
 body {
   margin: 0;
@@ -12,7 +27,7 @@ body {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 /* Container da área Blockly + botão */
